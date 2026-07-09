@@ -1,93 +1,220 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Incoming Fall 2026</title>
-  <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SuiteSplit — Incoming Fall 2026</title>
+<style>
+  :root {
+    --bg: #ffffff;
+    --ink: #0a0a0a;
+    --muted: #6b6b6b;
+    --border: #e4e4e4;
+    --accent: #000000;
+  }
 
-    body {
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      background: #ffffff;
-      color: #222;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      padding: 40px 20px;
-    }
+  * { box-sizing: border-box; }
 
-    .badge {
-      font-size: 12px;
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-      color: #999;
-      margin-bottom: 40px;
-    }
+  html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+  }
 
-    .team-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 16px;
-      width: 100%;
-      max-width: 440px;
-    }
+  body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
 
-    .team-card {
-      border: 1px solid #e5e5e5;
-      border-radius: 6px;
-      padding: 28px 24px;
-    }
+  header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 28px 40px;
+    border-bottom: 1px solid var(--border);
+  }
 
-    .avatar {
-      width: 36px;
-      height: 36px;
-      background: #f0f0f0;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 13px;
-      font-weight: 600;
-      color: #888;
-      margin-bottom: 16px;
-    }
+  .logo-mark {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 600;
+    font-size: 17px;
+    letter-spacing: -0.02em;
+  }
 
-    .team-card h3 {
-      font-size: 15px;
-      font-weight: 600;
-      color: #111;
-      margin-bottom: 4px;
-    }
+  .logo-mark img {
+    height: 30px;
+    width: 30px;
+    object-fit: contain;
+    background: #000;
+    border-radius: 6px;
+    padding: 3px;
+  }
 
-    .team-card span {
-      font-size: 13px;
-      color: #999;
-    }
+  .status-pill {
+    font-size: 12px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--muted);
+    border: 1px solid var(--border);
+    padding: 6px 12px;
+    border-radius: 999px;
+  }
 
-    @media (max-width: 480px) {
-      .team-grid { grid-template-columns: 1fr; }
-    }
-  </style>
+  main {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 60px 24px;
+  }
+
+  .hero {
+    max-width: 640px;
+    text-align: center;
+  }
+
+  .hero-mark {
+    height: 56px;
+    width: 56px;
+    object-fit: contain;
+    background: #000;
+    border-radius: 12px;
+    padding: 6px;
+    margin-bottom: 24px;
+  }
+
+  .hero .brand {
+    font-size: 15px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 18px;
+  }
+
+  .hero h1 {
+    font-size: clamp(38px, 6vw, 64px);
+    line-height: 1.05;
+    letter-spacing: -0.03em;
+    margin: 0 0 20px;
+    font-weight: 700;
+  }
+
+  .hero p {
+    font-size: 17px;
+    line-height: 1.6;
+    color: var(--muted);
+    margin: 0 auto 36px;
+    max-width: 460px;
+  }
+
+  .timeline {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    border: 1px solid var(--border);
+    padding: 10px 20px;
+    border-radius: 999px;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 0.01em;
+  }
+
+  .timeline .dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--accent);
+    display: inline-block;
+  }
+
+  footer {
+    border-top: 1px solid var(--border);
+    padding: 28px 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+
+  .founders {
+    display: flex;
+    gap: 36px;
+    flex-wrap: wrap;
+  }
+
+  .founder {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .founder .name {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--ink);
+  }
+
+  .founder .role {
+    font-size: 12px;
+    color: var(--muted);
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+  }
+
+  .footer-note {
+    font-size: 12px;
+    color: var(--muted);
+  }
+
+  @media (max-width: 520px) {
+    header, footer { padding: 22px 20px; }
+    footer { flex-direction: column; align-items: flex-start; }
+  }
+</style>
 </head>
 <body>
 
-  <div class="badge">Incoming Fall 2026</div>
+  <header>
+    <div class="logo-mark">
+      <img src="suitesplit-logo.jpeg" alt="SuiteSplit logo" id="logo-img">
+      SuiteSplit
+    </div>
+    <div class="status-pill">Coming Soon</div>
+  </header>
 
-  <div class="team-grid">
-    <div class="team-card">
-      <div class="avatar">WL</div>
-      <h3>Wallace Lau</h3>
-      <span>Co-Founder</span>
+  <main>
+    <div class="hero">
+      <img src="suitesplit-logo.jpeg" alt="SuiteSplit" class="hero-mark">
+      <div class="brand">SuiteSplit</div>
+      <h1>Find your people.<br>Split the suite.</h1>
+      <p>The easiest way to match with roommates who actually fit — same habits, same schedule, same page.</p>
+      <div class="timeline">
+        <span class="dot"></span>
+        Incoming Fall 2026
+      </div>
     </div>
-    <div class="team-card">
-      <div class="avatar">J</div>
-      <h3>Johnathan</h3>
-      <span>Founding Engineer</span>
+  </main>
+
+  <footer>
+    <div class="founders">
+      <div class="founder">
+        <span class="name">Johnathan Paul</span>
+        <span class="role">Co-Founder</span>
+      </div>
+      <div class="founder">
+        <span class="name">Wallace Lau</span>
+        <span class="role">Co-Founder</span>
+      </div>
     </div>
-  </div>
+    <div class="footer-note">&copy; 2026 SuiteSplit</div>
+  </footer>
 
 </body>
 </html>
